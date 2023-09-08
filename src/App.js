@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+
+import Searchbar from "./component/Search/Searchbar";
+import Result from "./component/Result/Result";
+import AudioPlayer from "./component/AudioPlayer/AudioPlayer";
 
 function App() {
+  const [words, setWords] = useState("");
+  const [definition, setDefinition] = useState(null);
+
+  useEffect(() => {
+    if (!words) return;
+
+    const fetchData = async () => {
+      const res = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${words}`
+      );
+      const data = await res.json();
+      console.log("data", data);
+      setDefinition(data.definition);
+    };
+
+    fetchData();
+  }, [words]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Welcome to Dictionary App</h1>
+      <Searchbar setWords={setWords} />
+      <Result definition={definition} />
+      <AudioPlayer />
     </div>
   );
 }
