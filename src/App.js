@@ -16,8 +16,11 @@ function App() {
         `https://api.dictionaryapi.dev/api/v2/entries/en/${words}`
       );
       const data = await res.json();
-      console.log("data", data);
-      setDefinition(data.definition);
+      const firstWordData = data[0];
+      const allDefinitions = firstWordData.meanings
+        .map((meaning) => meaning.definitions)
+        .flat();
+      setDefinition(allDefinitions);
     };
 
     fetchData();

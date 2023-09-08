@@ -1,11 +1,22 @@
-//Displays the result from the API.
-//Also displaying the error if search for empthy
+import React from "react";
 
+const Result = ({ definition }) => {
+console.log("def", definition);
+  if(!definition) {
+  return <div>No definition available</div>
+}
 
-const Result = () => {
   return (
     <div>
-      <p> Result is showing here </p>
+     {definition && (
+  <div>
+    {definition.map((def, index) => (
+      <div key={index}>
+        <p>Definition: {def.definition}</p>
+      </div>
+    ))}
+  </div>
+)}
     </div>
   )
 };
