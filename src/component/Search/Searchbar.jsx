@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import styles from "./Searchbar.module.css";
+
 const Searchbar = ({ setWords }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isEmptySearch, setIsEmptySearch] = useState(false);
@@ -18,7 +20,7 @@ const Searchbar = ({ setWords }) => {
 
   return (
     <div>
-      <form onSubmit={submitHandle}>
+      <form onSubmit={submitHandle} className={styles.formWrapper}>
         <label htmlFor="searchInput">Search for a word: </label>
         <input
           id="searchInput"
@@ -29,6 +31,7 @@ const Searchbar = ({ setWords }) => {
             setIsEmptySearch(false);
           }}
           placeholder="Enter a word..."
+          className={styles.inputField}
         />
         <button type="submit">Search</button>
       </form>

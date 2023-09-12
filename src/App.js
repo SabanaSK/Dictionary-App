@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Searchbar from "./component/Search/Searchbar";
 import Result from "./component/Result/Result";
+import "./App.css";
 
 const fetchWordData = async (word) => {
   const res = await fetch(
@@ -51,8 +52,8 @@ function App() {
   }, [searchQuery]);
 
   return (
-    <div>
-      <h1>Welcome to Dictionary App</h1>
+    <div className="container">
+      <h1 className="title">Welcome to Dictionary App</h1>
       <Searchbar setWords={setSearchQuery} />
       {isLoading ? (
         <div>Loading...</div>
