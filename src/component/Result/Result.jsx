@@ -1,24 +1,28 @@
 import React from "react";
 
-const Result = ({ definition }) => {
-console.log("def", definition);
-  if(!definition) {
-  return <div>No definition available</div>
-}
-
+const Result = ({ definition, audioUrl }) => {
   return (
     <div>
-     {definition && (
-  <div>
-    {definition.map((def, index) => (
-      <div key={index}>
-        <p>Definition: {def.definition}</p>
-      </div>
-    ))}
-  </div>
-)}
+      {audioUrl && (
+        <div>
+          <audio controls>
+            <source src={audioUrl} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      )}
+
+      {definition && (
+        <div>
+          {definition.map((def, index) => (
+            <div key={def.definition || index}>
+              <p>Definition: {def.definition}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-  )
+  );
 };
 
 export default Result;

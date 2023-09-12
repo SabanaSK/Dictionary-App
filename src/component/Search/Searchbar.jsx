@@ -1,31 +1,40 @@
-//The search field and logic for fetching words.
 import { useState } from "react";
 
-const Searchbar = ({setWords}) => {
+const Searchbar = ({ setWords }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isEmptySearch, setIsEmptySearch] = useState(false);
 
   const submitHandle = (e) => {
     e.preventDefault();
     if (searchQuery.trim() === "") {
-      alert("Search field cannot be empty"); 
-      return;
+      setIsEmptySearch(true);
+      setWords(""); 
+    } else {
+      setIsEmptySearch(false);
+      setWords(searchQuery);
     }
-    setWords(searchQuery);
   };
-
+  
 
   return (
-    <form onSubmit={submitHandle}>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search for a word..."
-      />
-       <button type="submit">Search</button>
-    </form>
-  )
+    <div>
+      <form onSubmit={submitHandle}>
+        <label htmlFor="searchInput">Search for a word: </label>
+        <input
+          id="searchInput"
+          type="text"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            setIsEmptySearch(false);
+          }}
+          placeholder="Enter a word..."
+        />
+        <button type="submit">Search</button>
+      </form>
+      {isEmptySearch && <p>Please enter a word to search for its definition.</p>}
+    </div>
+  );
 };
 
 export default Searchbar;
-
