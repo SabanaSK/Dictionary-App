@@ -26,7 +26,7 @@ function App() {
       setAudioUrl(null);
       return;
     }
-    console.log("query", searchQuery);
+
     const fetchData = async () => {
       setIsLoading(true);
       try {
