@@ -50,7 +50,6 @@ function App() {
     fetchData();
   }, [searchQuery]);
 
-  console.log(audioUrl);
   return (
     <div className="container">
       <h1 className="title">Welcome to Dictionary App</h1>

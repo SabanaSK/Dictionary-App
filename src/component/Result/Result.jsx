@@ -6,7 +6,7 @@ const Result = ({ definition, audioUrl }) => {
     <div className={styles.resultContainer}>
       {audioUrl && (
         <div>
-          <audio controls>
+          <audio data-testid="audio" controls>
             <source data-testid="source" src={audioUrl} type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>

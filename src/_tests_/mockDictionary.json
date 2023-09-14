@@ -5,11 +5,11 @@
     "phonetics": [
       {
         "text": "/ˈpɒsɪbl̩/",
-        "audioUrl": ""
+        "audio": ""
       },
       {
         "text": "/ˈpɑsəbl̩/",
-        "audioUrl": "https://api.dictionaryapi.dev/media/pronunciations/en/possible-us.mp3",
+        "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/possible-us.mp3",
         "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=1118879",
         "license": {
           "name": "BY-SA 3.0",
@@ -122,7 +122,7 @@
     "phonetics": [
       {
         "text": "həˈləʊ",
-        "audioUrl": "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3"
+        "audio": "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3"
       },
       {
         "text": "hɛˈləʊ"
