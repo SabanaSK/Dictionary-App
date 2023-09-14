@@ -1,11 +1,7 @@
-.container {
+.resultContainer {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
-}
-
-.title {
-  font-size: 40px;
+  align-items: center;
 }

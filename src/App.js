@@ -32,15 +32,14 @@ function App() {
       try {
         const data = await fetchWordData(searchQuery);
         const firstWordData = data[0];
+
         if (firstWordData && firstWordData.meanings) {
-          const allDefinitions = firstWordData.meanings
-            .map((meaning) => meaning.definitions)
-            .flat();
-          setDefinition(allDefinitions);
+          setDefinition(firstWordData.meanings);
           if (firstWordData.phonetics && firstWordData.phonetics[0].audio) {
             setAudioUrl(firstWordData.phonetics[0].audio);
           }
         }
+
         setIsLoading(false);
       } catch (err) {
         setIsLoading(false);
@@ -51,6 +50,7 @@ function App() {
     fetchData();
   }, [searchQuery]);
 
+  console.log(audioUrl);
   return (
     <div className="container">
       <h1 className="title">Welcome to Dictionary App</h1>
