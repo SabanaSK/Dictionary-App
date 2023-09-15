@@ -2,19 +2,18 @@ import { useState } from "react";
 
 import styles from "./Searchbar.module.css";
 
-const Searchbar = ({ setWords }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+const Searchbar = ({ setSearchQuery }) => {
+  const [whileSearch, setWhileSearch] = useState("")
   const [isEmptySearch, setIsEmptySearch] = useState(false);
 
   const submitHandle = (e) => {
     e.preventDefault();
-    if (searchQuery.trim() === "") {
+    if (whileSearch.trim() === "") {
       setIsEmptySearch(true);
-      setWords(""); 
     } else {
       setIsEmptySearch(false);
-      setWords(searchQuery);
     }
+    setSearchQuery(whileSearch)
   };
   
 
@@ -25,9 +24,9 @@ const Searchbar = ({ setWords }) => {
         <input
           id="searchInput"
           type="text"
-          value={searchQuery}
+          value={whileSearch}
           onChange={(e) => {
-            setSearchQuery(e.target.value);
+            setWhileSearch(e.target.value);
             setIsEmptySearch(false);
           }}
           placeholder="Enter a word..."

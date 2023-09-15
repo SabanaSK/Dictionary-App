@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="container">
       <h1 className="title">Welcome to Dictionary App</h1>
-      <Searchbar setWords={setSearchQuery} />
+      <Searchbar setSearchQuery={setSearchQuery} />
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (

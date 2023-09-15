@@ -14,12 +14,12 @@ const Result = ({ definition, audioUrl }) => {
       )}
 
       {definition && (
-        <div>
+        <div data-testid="definition">
           {definition.map((meaning, index) => (
             <div key={index}>
               {meaning.partOfSpeech && <p>Part of Speech: {meaning.partOfSpeech}</p>}
               {meaning.definitions.map((def, i) => (
-                <div key={i}>
+                <div key={i} className={styles.listContainer}>
                   <p>Definition: {def.definition}</p>
                   {def.example && <p>Example: {def.example}</p>}
                   {def.synonyms && <p>Synonyms: {def.synonyms}</p>}

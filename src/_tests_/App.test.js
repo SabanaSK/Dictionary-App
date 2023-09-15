@@ -1,4 +1,3 @@
-/* eslint-disable testing-library/prefer-find-by */
 import { render, screen, waitFor, within } from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
@@ -61,13 +60,11 @@ test("should display data of example via click", async () => {
   const searchButton = screen.getByRole("button", { name: /search/i });
   await user.click(searchButton);
 
-  await waitFor(() =>
-    expect(
-      screen.getByText(
-        "Example: Jones is a possible for the new opening in sales."
-      )
-    ).toBeInTheDocument()
-  );
+  expect(
+    await screen.findByText(
+      "Example: Jones is a possible for the new opening in sales."
+    )
+  ).toBeInTheDocument();
 });
 
 test("should display data of synonyms via click", async () => {
@@ -84,9 +81,7 @@ test("should display data of synonyms via click", async () => {
   const searchButton = screen.getByRole("button", { name: /search/i });
   await user.click(searchButton);
 
-  await waitFor(() =>
-    expect(screen.getByText("Synonyms: futurable")).toBeInTheDocument()
-  );
+  expect(await screen.findByText("Synonyms: futurable")).toBeInTheDocument();
 });
 
 test("should display data of Antonyms via click", async () => {
@@ -103,9 +98,7 @@ test("should display data of Antonyms via click", async () => {
   const searchButton = screen.getByRole("button", { name: /search/i });
   await user.click(searchButton);
 
-  await waitFor(() =>
-    expect(screen.getByText("Antonyms: impossible")).toBeInTheDocument()
-  );
+  expect(await screen.findByText("Antonyms: impossible")).toBeInTheDocument();
 });
 
 test("should be able to see error when sumbit something not a words", async () => {
@@ -122,13 +115,11 @@ test("should be able to see error when sumbit something not a words", async () =
   const searchButton = screen.getByRole("button", { name: /search/i });
   await user.click(searchButton);
 
-  await waitFor(() =>
-    expect(
-      screen.getByText(
-        "Error: No definition found. Refresh the page and try again with new words."
-      )
-    ).toBeInTheDocument()
-  );
+  expect(
+    await screen.findByText(
+      "Error: No definition found. Refresh the page and try again with new words."
+    )
+  ).toBeInTheDocument();
 });
 
 test("should render search bar", () => {
